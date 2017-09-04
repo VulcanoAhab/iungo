@@ -17,10 +17,12 @@ class Transform:
         return (start+timedelta(days=d) for d in deltaDates)
 
     @staticmethod
-    def loadCsv(filePath, edgeBuilder):
+    def loadCsv(filePath):
         """
         """
-
+        fd=open(filePath, "r")
+        table=csv.reader(csvfile)
+        return table
 
     @classmethod
     def setDateFormat(cls, dateFormat):
