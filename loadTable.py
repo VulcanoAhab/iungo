@@ -21,7 +21,8 @@ class Transform:
         """
         """
         fd=open(filePath, "r")
-        table=csv.reader(csvfile)
+        table=list(csv.reader(fd))
+        fd.close()
         return table
 
     @classmethod
@@ -45,7 +46,7 @@ class Transform:
     def __init__(self, filePath):
         """
         """
-        self._rawIter=ProcessTable.loadCsv(filePath)
+        self._rawIter=Transform.loadCsv(filePath)
         self._processedIter=None
 
 
@@ -59,5 +60,7 @@ class Transform:
             }
         """
         for row in self._rawIter:
-            if not columnsMapper:yield row
+            if not columnsMapper:
+                yield row
+                continue
             yield self.parseRow(row, columnsMapper)
