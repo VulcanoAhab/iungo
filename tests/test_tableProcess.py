@@ -20,7 +20,10 @@ class TransformTest(unittest.TestCase):
     def test_tableParse(self):
         """
         """
-        for row in self._table.parseRows():print(row)
+        _reqs=("edge_date", "node_source","node_target")
+        for row in self._table.parseRows():
+            for field in _reqs:self.assertIn(field, row)
+
 
 # command line
 if __name__ == "__main__":
