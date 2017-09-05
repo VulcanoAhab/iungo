@@ -21,7 +21,7 @@ class Transform:
         """
         """
         fd=open(filePath, "r")
-        table=list(csv.reader(fd))
+        table=list(csv.DictReader(fd))
         fd.close()
         return table
 
